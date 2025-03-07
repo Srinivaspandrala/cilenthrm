@@ -1,0 +1,438 @@
+/* --------------------------------------------------
+   Layout: Application Container
+----------------------------------------------------- */
+.app-container {
+  display: flex;
+  flex-direction: column;
+  font-size: 1rem !important;
+  transition: transform 0.3s ease;
+  height: 90vh; /* Set total height to 100vh */
+}
+
+/* --------------------------------------------------
+   Navigation Panel
+----------------------------------------------------- */
+.nav-panel {
+  width: 70px;
+  height: 90vh; /* Decreased width */
+  padding: 10px 0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: #ffffff !important;
+  font-size: 1rem; /* Set font size to 1rem */
+  transition: transform 0.3s ease;
+}
+
+.nav-panel h2, .nav-panel h3 {
+  font-size: 1rem; /* Ensure h2 and h3 elements have the same font size */
+  transition: transform 0.3s ease;
+}
+
+.nav-card {
+  background-color: #ffffff;
+  color: #333;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 6px;
+  padding-top: 10px;
+  margin: 10px;
+  font-size: 13px !important;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+  text-align: center;
+  overflow: hidden;
+}
+
+.nav-card:hover {
+  transform: translateY(-2px);
+}
+
+/* Active state for nav items */
+.nav-card.active {
+  background-color: #02499b;
+  color: #fff;
+}
+
+/* --------------------------------------------------
+   Main Content Area
+----------------------------------------------------- */
+.content-area {
+  width: 100%;
+  padding: 20px;
+  transition: transform 0.3s ease;
+}
+
+/* Card Layout & Styles */
+.card-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+  margin-top: 20px;
+  transition: transform 0.3s ease;
+}
+
+.card-item {
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s, transform 0.3s;
+}
+
+.card-item:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.contact-card {
+  grid-column: span 1;
+}
+.updatedetalis-button{
+  margin-left: 400px;
+  color: #ffffff;
+  background-color: #02499b;
+}
+
+/* --------------------------------------------------
+   Profile Section
+----------------------------------------------------- */
+.profile-section {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding-bottom: 10px;
+  border-radius: 10px;
+  padding: 20px;
+  transition: transform 0.3s ease;
+}
+.pp-11{
+  text-align:center;
+  font-weight: 450;
+  padding-top: 5px;
+  transition: transform 0.3s ease;
+}
+.pp11{
+  padding: 0px;
+  margin: 0px;
+  font-size: 1rem;
+  padding-top: 4px;
+  transition: transform 0.3s ease;
+}
+.sp-11{
+  font-size: 1rem;
+  font-weight: 500;
+  transition: transform 0.3s ease;
+}
+.profile-header {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  width: 100%;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+  margin-bottom: 10px;
+  transition: transform 0.3s ease;
+}
+
+/* Replace photo styling with icon styling */
+.profile-icon {
+  font-size: 60px;
+  color: #02499b;
+  background-color: #f2f4f7;
+  width: 110px;
+  height:110px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin: auto;
+  margin-bottom: 16px;
+  transition: transform 0.3s ease;
+}
+.profile-icon1 {
+  font-size: 30px;
+  color: #fff;
+  width: 45px;
+  height:45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  box-shadow: 0 2px 4px #a1c9f8;
+  transition: transform 0.3s ease;
+}
+.tl-11{
+  font-size: 19px;
+  font-weight: 500;
+  padding: 0px;
+  margin: 0px;
+  transition: transform 0.3s ease;
+}
+.profile-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  transition: transform 0.3s ease;
+}
+
+.profile-name {
+  font-size: 22px;
+  font-weight: bold;
+  transition: transform 0.3s ease;
+}
+
+.profile-email {
+  font-size: 14px;
+  color: #555;
+  transition: transform 0.3s ease;
+}
+
+.profile-details {
+  text-align: center;
+  line-height: 1.6;
+  transition: transform 0.3s ease;
+}
+.fl-11{
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  transition: transform 0.3s ease;
+}
+
+/* --------------------------------------------------
+   Form Styles
+----------------------------------------------------- */
+.form-group {
+  margin-bottom: 15px;
+  transition: transform 0.3s ease;
+}
+
+.form-label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  transition: transform 0.3s ease;
+}
+
+.form-input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  outline: none;
+  transition: transform 0.3s ease;
+}
+
+.password-btn {
+  width: 30%;
+  padding: 10px;
+  background-color: #02499b;
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  margin-left: 400px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.password-btn:hover {
+  background-color: #0257ac;
+  transform: translateY(-2px);
+}
+
+/* Password Input Container */
+.password-input-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.password-input-container input {
+  padding-right: 30px; /* Adjust padding to make space for the icon */
+}
+
+.password-input-container .fas.fa-lock {
+  position: absolute;
+  left: 10px;
+  color: #aaa;
+}
+
+.password-toggle-icon {
+  position: absolute;
+  right: 10px;
+  cursor: pointer;
+  color: #aaa;
+}
+
+/* --------------------------------------------------
+   Horizontal Card Layout
+----------------------------------------------------- */
+.horizontal-card-layout {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: space-between;
+  margin-top: 15px;
+  transition: transform 0.3s ease;
+}
+
+.horizontal-card-item {
+  flex: 1;
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+/* --------------------------------------------------
+   Company Chart
+----------------------------------------------------- */
+.company-chart {
+  background-color: #e9ecef;
+  border-radius: 10px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+/* --------------------------------------------------
+   Employee Page
+----------------------------------------------------- */
+.employee-page {
+  background: linear-gradient(150deg, #02499b, #0257ac); /* Apply background color */
+  transition: transform 0.3s ease;
+}
+
+/* --------------------------------------------------
+   Responsive Design
+----------------------------------------------------- */
+@media (min-width: 768px) {
+  .app-container {
+    flex-direction: row;
+  }
+
+  .nav-panel {
+    width: 200px; /* Decreased width */
+    height: 100vh;
+    padding: 15px 0;
+    margin: 0;
+    font-size: 1rem; /* Set font size to 1rem */
+  }
+
+  .content-area {
+    width: calc(100% - 200px); /* Decreased width */
+    padding: 20px;
+    margin: 0;
+  }
+
+  .card-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .contact-card {
+    grid-column: span 2;
+  }
+}
+
+@media (min-width: 992px) {
+  .nav-panel {
+    width: 250px; /* Decreased width */
+    font-size: 1rem; /* Set font size to 1rem */
+  }
+
+  .content-area {
+    width: calc(100% - 250px); /* Decreased width */
+  }
+}
+
+/* --------------------------------------------------
+   Exit Details Table
+----------------------------------------------------- */
+.exit-details-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  border: none;
+  transition: transform 0.3s ease;
+}
+
+.exit-details-table th, .exit-details-table td {
+  padding: 8px;
+  text-align: left;
+  transition: transform 0.3s ease;
+}
+
+.exit-details-table th {
+  background-color: #02499b;
+  color: white;
+  transition: transform 0.3s ease;
+}
+
+.exit-details-table tr:nth-child(even) {
+  background-color: #f2f2f2;
+  transition: transform 0.3s ease;
+}
+
+.exit-details-table tr:hover {
+  background-color: #ddd;
+  transition: transform 0.3s ease;
+}
+
+/* --------------------------------------------------
+   Message Styles
+----------------------------------------------------- */
+.message {
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.message.success {
+  background-color: #d4edda;
+  color: #155724;
+}
+
+.message.error {
+  background-color: #f8d7da;
+  color: #721c24;
+}
+
+.employee-card {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease-in-out;
+  width: 250px;
+}
+
+.employee-card:hover {
+  transform: scale(1.05);
+}
+
+.profile-image img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border: 3px solid #d95d3f;
+}
+
+.employee-details {
+  margin-top: 10px;
+  font-family: 'Arial', sans-serif;
+  color: #333;
+}
+
+.employee-details h2 {
+  font-size: 20px;
+  color: #c0492f;
+}
+
+.employee-details p {
+  font-size: 14px;
+  margin: 5px 0;
+}
