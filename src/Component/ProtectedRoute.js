@@ -1,8 +1,8 @@
 import { Navigate } from 'react-router-dom';
-import {jwtDecode} from 'jwt-decode';
+import { jwtDecode } from 'jwt-decode';
 import Cookies from 'js-cookie';
 
-const ProtectedRoute = ({ children, role }) => {
+const ProtectedRoute = ({ children, roles }) => {
     const token = Cookies.get('token'); 
 
     if (!token) {
@@ -31,8 +31,8 @@ const ProtectedRoute = ({ children, role }) => {
 
     const userRole = decodedToken.role; 
 
-    if (role && userRole !== role) {
-        Cookies.remove('token');
+    // if userRole is in the allowed roles list
+    if (roles && !roles.includes(userRole)) {
         return <Navigate to="/unauthorized" />;
     }
 

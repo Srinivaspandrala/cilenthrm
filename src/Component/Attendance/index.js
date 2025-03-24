@@ -18,7 +18,7 @@ const AttendancePage = () => {
           ?.split('=')[1];
 
         if (!token) {
-          alert('Token not found! Please log in.');
+          alert('Unauthorized user! Please log in.');
           return;
         }
 
@@ -64,16 +64,16 @@ const AttendancePage = () => {
   };
 
   return (
+    <div>
+            <div className="info-box">
+    </div>
     <div className={slide === "false" ? 'attendance-container' : 'attendance-con'}>
-      <div className="info-box">
-        <div className="title-container-left">
-          <h3 className="info-title">Log & Request</h3>
-        </div>
-        <div className="button-container-right">
-          <button className="info-heading" onClick={handleNavigationAttendancelog}>Attendance Log</button>
+      
+          <h1 className="info-title">Log & Activities</h1>
+          <div className="button-container-right">
           <button className="info-heading" onClick={handleNavigationAttendanceRequests}>Attendance Requests</button>
         </div>
-      </div>
+
       <div className="attendance-table-wrapper">
         <div className="table-container">
           <table className="attendance-table">
@@ -104,7 +104,7 @@ const AttendancePage = () => {
                       ) : entry.log === 'No' ? (
                         <FaTimesCircle style={{ color: 'red' }} />
                       ) : (
-                        entry.log // Display text for WH and EL
+                        entry.log 
                       )}
                     </td>
                   </tr>
@@ -119,6 +119,8 @@ const AttendancePage = () => {
         </div>
       </div>
     </div>
+    </div>
+
   );
 };
 

@@ -54,7 +54,7 @@ const ForgotPassword = () => {
         <form className="form-container1" onSubmit={onSubmitForm}>
           <div className="input-container">
             <label className="input-label" htmlFor="email">
-             <FaEnvelope className="register-icon"/> Email:
+            Email:
             </label>
             <input
               type="email"

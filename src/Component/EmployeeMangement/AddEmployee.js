@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./AddEmployee.css"; // Ensure the CSS file is linked
+import "./AddEmployee.css"
 
 const AddEmployee = () => {
   const [activeTab, setActiveTab] = useState(0);
@@ -11,6 +11,10 @@ const AddEmployee = () => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [fullName, setFullName] = useState("");
+  const [documentData, setDocumentData] = useState({
+    Photo: null,
+    idProof: null,
+  });
 
   const handleInputChange = (section, field, value) => {
     setFormData((prevData) => ({
@@ -20,10 +24,17 @@ const AddEmployee = () => {
   };
 
   const handleFileChange = (section, field, file) => {
-    setFormData((prevData) => ({
-      ...prevData,
-      [section]: { ...prevData[section], [field]: file },
-    }));
+    if (section === "documents") {
+      setDocumentData((prevData) => ({
+        ...prevData,
+        [field]: file,
+      }));
+    } else {
+      setFormData((prevData) => ({
+        ...prevData,
+        [section]: { ...prevData[section], [field]: file },
+      }));
+    }
   };
 
   const handleFirstNameChange = (e) => {
@@ -99,12 +110,35 @@ const AddEmployee = () => {
         setFirstName("");
         setLastName("");
         setFullName("");
-        setActiveTab(0); // Reset to the first tab
+        setDocumentData({ resume: null, idProof: null });
+        setActiveTab(0); 
       } else {
-        alert("Failed to Registered!");
+        alert("Failed to Register!");
       }
     } catch (error) {
       console.error("Error register :", error);
+    }
+
+    const documentFormData = new FormData();
+    documentFormData.append("Photo", documentData.Photo);
+    documentFormData.append("idProof", documentData.idProof);
+
+    try {
+      const documentResponse = await fetch("http://localhost:5000/uploadDocuments", {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+        body: documentFormData,
+      });
+
+      if (documentResponse.ok) {
+        alert("Documents uploaded successfully!");
+      } else {
+        alert("Failed to upload documents!");
+      }
+    } catch (error) {
+      console.error("Error uploading documents:", error);
     }
   };
 
@@ -123,7 +157,7 @@ const AddEmployee = () => {
 
   return (
     <div className="form-container">
-      <h1>Employee Registration</h1>
+      <h1 className="heading-bg">Employee Registration</h1>
       <div className="tabs">
         {["Basic Details", "Address", "Employment", "Documents"].map((tab, index) => (
           <div key={index} className={`tab ${activeTab === index ? "active-addemployee" : ""}`} onClick={() => setActiveTab(index)}>
@@ -132,9 +166,7 @@ const AddEmployee = () => {
         ))}
       </div>
 
-      {/* Form Sections */}
       <div className="form-card">
-        {/* Basic Details */}
         {activeTab === 0 && (
           <div className="section active-addemployee">
             <div className="input-group">
@@ -173,7 +205,6 @@ const AddEmployee = () => {
           </div>
         )}
 
-        {/* Address */}
         {activeTab === 1 && (
           <div className="section active-addemployee">
             <div className="input-group">
@@ -203,7 +234,6 @@ const AddEmployee = () => {
           </div>
         )}
 
-        {/* Employment */}
         {activeTab === 2 && (
           <div className="section active-addemployee">
             <div className="input-group">
@@ -239,24 +269,22 @@ const AddEmployee = () => {
           </div>
         )}
 
-        {/* Documents */}
         {activeTab === 3 && (
           <div className="section active-addemployee">
             <div className="input-group">
-              <input type="file" onChange={(e) => handleFileChange("documents", "resume", e.target.files[0])} />
+              <input type="file" onChange={(e) => handleFileChange("documents", "Photo", e.target.files[0])} />
               <i className="fas fa-file-pdf"></i>
-              <span style={{fontWeight:"bold"}}>Photo Id</span>
+              <span style={{fontWeight:"bold"}}>Photo</span>
             </div>
             <div className="input-group">
               <input type="file" onChange={(e) => handleFileChange("documents", "idProof", e.target.files[0])} />
               <i className="fas fa-id-card"></i>
-              <span style={{fontWeight:"bold"}}>Other Documents</span>
+              <span style={{fontWeight:"bold"}}>ID Proof</span>
             </div>
           </div>
         )}
       </div>
 
-      {/* Navigation Buttons */}
       <div className="button-container">
         {activeTab > 0 && (
           <button className="back" onClick={prevStep}>

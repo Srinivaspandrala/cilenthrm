@@ -80,10 +80,7 @@ const LeaveForm = () => {
 
   return (
     <div className="leave-form-container">
-      <h2 className="tll">Apply for Leave</h2>
-      <p className="pp1">
-        NOTE: <span>Leave Can be Applied 10 Days in Advance</span>
-      </p>
+      <h2 className="heading-bg-leaves">Apply for Leave</h2>
       <form onSubmit={handleSubmit}>
         <div className="date-time-container">
           <div className="date-time-column">
@@ -105,6 +102,8 @@ const LeaveForm = () => {
               onChange={(e) => setToDate(e.target.value)}
               required
             />
+
+
           </div>
         </div>
 
@@ -146,10 +145,18 @@ const LeaveForm = () => {
           required
         />
 
-        <button type="submit" className="submit-btn">
-          Submit
-        </button>
+        <div className="button-container">
+          <button type="submit" className="submit-btn">
+            Submit
+          </button>
+        </div>
         {error && <p className="error-message">{error}</p>}
+        <div className="bg-note">
+        <p className="note-line"><span className="note-line-span">NOTE:</span>Leave Can be Applied 10 Days in Advance
+      </p>
+
+        </div>
+
       </form>
     </div>
   );

@@ -1,4 +1,3 @@
-/* Main Container */
 .employee-overview-container {
     display: flex;
     gap: 20px;
@@ -8,7 +7,6 @@
     font-family: 'Arial', sans-serif;
 }
 
-/* Profile Card (Left Side) */
 .profile-card {
     width: 300px;
     background: white;
@@ -85,14 +83,12 @@
     background-color: #0056b3;
 }
 
-/* Tabs Container (Right Side) */
 .tabs-container {
     flex: 1;
     display: flex;
     flex-direction: column;
 }
 
-/* Tab Buttons */
 .tab-buttons {
     display: flex;
     gap: 10px;
@@ -124,8 +120,6 @@
     border-radius: 10px;
 }
 
-/* Details Card */
-/* Details Card */
 .details-card {
     padding: 20px;
     background: rgba(255, 255, 255, 0.9);
@@ -143,13 +137,11 @@
     border-left: 5px solid #007bff;
 }
 
-/* Hover Effect */
 .details-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
 }
 
-/* Label Style */
 .details-card p {
     display: flex;
     align-items: center;
@@ -163,13 +155,11 @@
     border-bottom: none;
 }
 
-/* Icons for Details */
 .details-card p strong {
     color: #007bff;
     font-weight: 600;
 }
 
-/* Animated Divider */
 .details-card::before {
     content: "";
     display: block;
@@ -196,4 +186,73 @@
     gap: 5px;
     margin-top: -20px;
     font-weight: 700;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.overlay-content {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.overlay-content h3 {
+    margin-bottom: 20px;
+}
+
+.overlay-content select,
+.overlay-content input {
+    margin-bottom: 10px;
+    padding: 8px;
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.overlay-content button {
+    margin-top: 10px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+}
+
+.overlay-content button:hover {
+    background-color: #45a049;
+}
+
+.overlay-content button:last-child {
+    background-color: #0056b3;
+}
+
+.overlay-content button:last-child:hover {
+    background-color: #007bff;
+}
+
+.close-icon {
+    position: absolute;
+    top: 120px;
+    right: 10px;
+    cursor: pointer;
+    font-size: 20px;
+    color: #333;
+}
+
+.close-icon:hover {
+    color: #f44336;
 }

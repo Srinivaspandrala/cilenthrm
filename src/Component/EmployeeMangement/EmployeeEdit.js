@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import Cookies from 'js-cookie';
+import { FaArrowCircleLeft, FaArrowLeft } from 'react-icons/fa';
 import './AddEmployee.css';
 
 const EmployeeEdit = () => {
@@ -93,18 +94,8 @@ const EmployeeEdit = () => {
         setFullName(`${firstName} ${e.target.value}`);
     };
 
-    const handleStatusChange = (e) => {
-        setStatus(e.target.value);
-        if (["On Hold", "Suspended", "Resigned"].includes(e.target.value)) {
-            setStatusDate(new Date().toISOString().split("T")[0]);
-        } else {
-            setStatusDate("");
-        }
-    };
 
-    const handleStatusDateChange = (e) => {
-        setStatusDate(e.target.value);
-    };
+
 
     const nextStep = () => {
         setActiveTab((prev) => Math.min(prev + 1, 3));
@@ -125,12 +116,24 @@ const EmployeeEdit = () => {
                     'Authorization': `Bearer ${token}`
                 },
                 body: JSON.stringify({
-                    ...formData,
                     FullName: fullName,
                     FirstName: firstName,
                     LastName: lastName,
-                    Status: status,
-                    StatusDate: statusDate
+                    WorkEmail: formData.basicDetails.email,
+                    phone: formData.basicDetails.phone,
+                    DateOfBirth: formData.basicDetails.dateOfBirth,
+                    Gender: formData.basicDetails.gender,
+                    Address: formData.address.street,
+                    City: formData.address.city,
+                    State: formData.address.state,
+                    PinCode: formData.address.zipcode,
+                    Country: formData.address.country,
+                    Company: formData.employment.company,
+                    Role: formData.employment.department,
+                    designation: formData.employment.position,
+                    startdate: formData.employment.startDate,
+                    status: status,
+                    Enddate: statusDate
                 })
             });
             if (response.ok) {
@@ -158,7 +161,12 @@ const EmployeeEdit = () => {
     
 
     return (
+        <div>
         <div className="form-container">
+        <div>
+                <button className="action-button-back" onClick={() => navigate(`/overviewemployee${id}`)}><FaArrowLeft/> Back</button>
+            </div>
+
             <h1>Edit Employee</h1>
             <div className="tabs">
                 {["Basic Details", "Address", "Employment", "Documents"].map((tab, index) => (
@@ -168,9 +176,7 @@ const EmployeeEdit = () => {
                 ))}
             </div>
 
-            {/* Form Sections */}
             <div className="form-card">
-                {/* Basic Details */}
                 {activeTab === 0 && (
                     <div className="section active-addemployee">
                         <div className="input-group" style={{backgroundColor:"#f5f5f5"}}>
@@ -213,7 +219,6 @@ const EmployeeEdit = () => {
                     </div>
                 )}
 
-                {/* Address */}
                 {activeTab === 1 && (
                     <div className="section active-addemployee">
                         <div className="input-group">
@@ -243,7 +248,6 @@ const EmployeeEdit = () => {
                     </div>
                 )}
 
-                {/* Employment */}
                 {activeTab === 2 && (
                     <div className="section active-addemployee">
                         <div className="input-group">
@@ -276,25 +280,9 @@ const EmployeeEdit = () => {
                             <input type="date" value={formData.employment.startDate} style={{color:"green",fontWeight:"bold"}} onChange={(e) => handleInputChange("employment", "startDate", e.target.value)} required/>
                             <span style={{fontWeight:"bold"}}>Start Date</span>
                         </div>
-                        <div className="input-group">
-                        <i class="fa fa-user-plus"></i>
-                        <select value={status} onChange={handleStatusChange} style={{fontWeight:"bold"}} required>
-                                <option value="Active">Active</option>
-                                <option value="On Hold">On Hold</option>
-                                <option value="Suspended">Suspended</option>
-                                <option value="Resigned">Resigned</option>
-                            </select>
-                        </div>
-                        {["On Hold", "Suspended", "Resigned"].includes(status) && (
-                            <div className="input-group">
-                                <i className="fas fa-calendar-alt"></i>
-                                <input type="date" value={statusDate} onChange={handleStatusDateChange} required />
-                            </div>
-                        )}
                     </div>
                 )}
 
-                {/* Documents */}
                 {activeTab === 3 && (
                     <div className="section active-addemployee">
                         <div className="input-group">
@@ -311,7 +299,6 @@ const EmployeeEdit = () => {
                 )}
             </div>
 
-            {/* Navigation Buttons */}
             <div className="button-container">
                 {activeTab > 0 && (
                     <button className="back" onClick={prevStep}>
@@ -329,6 +316,8 @@ const EmployeeEdit = () => {
                 )}
             </div>
         </div>
+        </div>
+
     );
 };
 

@@ -1,4 +1,3 @@
-/* App.css */
 .admin-attendance-reqp-container {
   min-height: 100vh;
   background-color: #ffffff;
@@ -8,12 +7,25 @@
   width: 70%;
   margin-left: 330px;
   margin-top: 20px;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+
 }
 
-h1 {
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: #1f2937;
+.heading-bg-req{
+  background-color: #0056b3;
+  color: #fff;
+  margin-top: -31px;
+  width: 106%;
+  font-size: 18px;
+  margin-left: -30px;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 15px;
+
 }
 
 .admin-attendance-reqp-table-container {
@@ -33,17 +45,17 @@ h1 {
 
 .admin-attendance-reqp-table th, .admin-attendance-reqp-table td {
   padding: 12px;
-  text-align: left; /* Center align text */
+  text-align: left; 
   border-bottom: 1px solid #ddd;
 }
 
 .admin-attendance-reqp-table th:first-child, .admin-attendance-reqp-table td:first-child {
-  width: 50px; /* Set width for checkbox column */
+  width: 50px; 
 }
 
 .admin-attendance-reqp-checkbox {
-  transform: scale(1.2); /* Increase checkbox size */
-  cursor: pointer; /* Change cursor to pointer */
+  transform: scale(1.2);
+  cursor: pointer; 
 }
 
 .admin-attendance-reqp-table th {
@@ -129,18 +141,18 @@ h1 {
 }
 
 .admin-attendance-reqp-action-button {
-  padding: 8px 12px; /* Add padding */
-  font-size: 16px; /* Set font size */
-  border: 1px solid #ccc; /* Add a border */
-  border-radius: 4px; /* Add rounded corners */
-  background-color: #f9f9f9; /* Set background color */
-  color: #333; /* Set text color */
-  outline: none; /* Remove the default focus outline */
-  cursor: pointer; /* Change cursor to pointer */
+  padding: 8px 12px; 
+  font-size: 16px; 
+  border: 1px solid #ccc; 
+  border-radius: 4px; 
+  background-color: #f9f9f9;
+  color: #333; 
+  outline: none; 
+  cursor: pointer; 
 }
 
 .admin-attendance-reqp-action-button:hover {
-  border-color: #999; /* Change border color on hover */
+  border-color: #999;
 }
 
 .admin-attendance-reqp-action-button-req{
@@ -148,77 +160,67 @@ h1 {
   background-color: transparent;
 }
 
-/* Style the input using the class selector */
 .admin-attendance-reqp-date-input {
-  padding: 8px; /* Add padding */
-  font-size: 16px; /* Set font size */
-  border: 1px solid #ccc; /* Add a border */
-  border-radius: 4px; /* Add rounded corners */
-  background-color: #f9f9f9; /* Set background color */
-  color: #333; /* Set text color */
+  padding: 8px; 
+  font-size: 16px; 
+  border: 1px solid #ccc; 
+  border-radius: 4px; 
+  background-color: #f9f9f9; 
+  color: #333;
   outline: none;
-  width: 200px; /* Remove the default focus outline */
+  width: 200px; 
 }
 
-/* Style the input when it is focused */
 .admin-attendance-reqp-date-input:focus {
-  border-color: #66afe9; /* Change border color on focus */
-  box-shadow: 0 0 8px rgba(102, 175, 233, 0.6); /* Add a glow effect on focus */
+  border-color: #66afe9; 
+  box-shadow: 0 0 8px rgba(102, 175, 233, 0.6);
 }
 
-/* Style the calendar dropdown icon (if supported by the browser) */
 .admin-attendance-reqp-date-input::-webkit-calendar-picker-indicator {
-  filter: invert(0.5); /* Change the color of the calendar icon */
-  cursor: pointer; /* Change cursor to pointer */
+  filter: invert(0.5);
+  cursor: pointer; 
 }
 
-/* Style the input when it is hovered */
 .admin-attendance-reqp-date-input:hover {
-  border-color: #999; /* Change border color on hover */
+  border-color: #999; 
 }
  
-/* Style the dropdown container */
 .admin-attendance-reqp-dropdown-request {
-  padding: 8px 12px; /* Add padding */
-  font-size: 16px; /* Set font size */
-  border: 1px solid #ccc; /* Add a border */
-  border-radius: 4px; /* Add rounded corners */
-  background-color: #f9f9f9; /* Set background color */
-  color: #333; /* Set text color */
-  outline: none; /* Remove the default focus outline */
-  appearance: none; /* Remove default arrow (for cross-browser compatibility) */
-  -webkit-appearance: none; /* Remove default arrow for Safari */
-  -moz-appearance: none; /* Remove default arrow for Firefox */
+  padding: 8px 12px; 
+  font-size: 16px; 
+  border: 1px solid #ccc; 
+  border-radius: 4px; 
+  background-color: #f9f9f9; 
+  color: #333;
+  outline: none; 
+  appearance: none;
+  -webkit-appearance: none; 
+  -moz-appearance: none; 
   cursor: pointer; 
-  width: 150px; /*
-  ma Set width */
+  width: 150px; 
 
 }
 
-/* Style the dropdown when it is focused */
 .admin-attendance-reqp-dropdown-request:focus {
-  border-color: #66afe9; /* Change border color on focus */
-  box-shadow: 0 0 8px rgba(102, 175, 233, 0.6); /* Add a glow effect on focus */
+  border-color: #66afe9;
+  box-shadow: 0 0 8px rgba(102, 175, 233, 0.6); 
 }
 
-/* Style the dropdown arrow (custom arrow using background image) */
 .admin-attendance-reqp-dropdown-request{
-  background-image: url('data:image/svg+xml;utf8,<svg fill="%23333" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>'); /* Custom arrow */
+  background-image: url('data:image/svg+xml;utf8,<svg fill="%23333" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>');  
   background-repeat: no-repeat;
-  background-position: right 8px center; /* Position the arrow */
-  background-size: 16px; /* Set arrow size */
+  background-position: right 8px center;
+  background-size: 16px; 
 }
 
-/* Style the dropdown options */
 .admin-attendance-reqp-dropdown-request option {
-  padding: 8px; /* Add padding to options */
-  background-color: #fff; /* Set background color for options */
-  color: #333; /* Set text color for options */
+  padding: 8px; 
+  background-color: #fff; 
+  color: #333;
 }
 
-/* Style the dropdown when hovered */
 .admin-attendance-reqp-dropdown-request:hover {
-  border-color: #999; /* Change border color on hover */
+  border-color: #999; 
 }
 
 .filter-section {

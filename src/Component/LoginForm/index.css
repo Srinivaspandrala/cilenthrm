@@ -9,20 +9,17 @@
   height: 100vh;
 }
 
-/* Glassmorphism Effect */
 .login-form__container {
-  background: hsl(0, 0%, 100%);
-  backdrop-filter: blur(10px);
+  background: #fff;
   padding: 40px;
-  border-radius: 20px;
-  box-shadow: 2px 8px 20px rgba(0, 0, 0, 0.15);
+  border-radius: 2px;
   width: 30%;
   max-width: 420px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
   padding-bottom: 0px !important;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Soft shadow */
+  transition: all 0.3s ease-in-out;
 }
 
-/* Input Fields */
 .login-form__input-container {
   margin-bottom: 20px;
 }
@@ -51,7 +48,6 @@
   background-color: #ffffff;
 }
 
-/* Buttons */
 .login-form__button {
   background: linear-gradient(90deg, #0467ca, #0568da);
   color: white;
@@ -77,12 +73,10 @@
 }
 
 
-
 .login-form__error{
   color: #ff0000;
 }
 
-/* Forgot Password */
 .login-form__forgot-password {
   font-weight: 500;
   font-size: 14px;
@@ -99,7 +93,6 @@
   color: #0B5EDA;
 }
 
-/* Password Toggle */
 .login-form__show-password {
   display: flex;
   justify-content: space-between;
@@ -131,7 +124,6 @@
   cursor: pointer;
 }
 
-/* Responsive Styles */
 @media screen and (max-width: 768px) {
   .login-form {
     padding: 20px;

@@ -1,11 +1,9 @@
 import React, { createContext, useState, useContext } from "react";
 
-// Create Context
 const ThemeContext = createContext();
 
-// Provider Component
 export const ThemeProvider = ({ children }) => {
-  const [slide, setSlide] = useState("true");  // ✅ Corrected variable name
+  const [slide, setSlide] = useState("true"); 
 
   const toggleTheme = () => {
     setSlide((prevSlide) => (prevSlide === "true" ? "false" : "true"));
@@ -18,5 +16,4 @@ export const ThemeProvider = ({ children }) => {
   );
 };
 
-// Custom hook to use context
 export const useTheme = () => useContext(ThemeContext);

@@ -79,8 +79,6 @@ function LoginForm() {
 
     return (
         <div className="login-form">
-      
-
             <form className="login-form__container" onSubmit={handleLogin}>
                 <div className="login-form__input-container">
                     <label className="login-form__label">

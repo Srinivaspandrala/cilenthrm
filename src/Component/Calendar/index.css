@@ -1,4 +1,3 @@
-/* Calendar Header */
 .calendar-header {
     display: flex;
     justify-content: space-between;
@@ -37,34 +36,30 @@
     transform: scale(1.2);
 }
 
-/* Calendar Layout */
 .calendar-render {
-    margin: 3px 0px 0px 320px;
-    width: 75%;
-    height: 68%; /* Use min-height */
-    border-radius: 12px;
-    padding: 30px;
+    margin: 50px 0px 0px 320px;
+    width: 76%;
+    height: 68%; 
+    border-radius: 5px;
+    padding: 50px;
     background-color: #ffffff;
     box-sizing: border-box;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+
 }
-.calendar-render1 {
-    margin: 3px 0px 0px 300px;
-    width: 75%;
-    height: 68%; /* Use min-height */
-    border-radius: 12px;
-    padding: 30px;
-    background-color: #ffffff;
-    box-sizing: border-box;
+
+.element.style{
+    padding: 0px;
+
 }
 
 .calendar-render.show {
     opacity: 1;
     transform: translateY(0);
-    height: auto; /* Adjust height */
-    overflow: visible; /* Ensure overflow when form is shown */
+    height: auto; 
+    overflow: visible; 
 }
 
-/* Day Background */
 .rbc-day-bg {
     border: 1px solid #ffffff;
     transition: background-color 0.3s;
@@ -77,7 +72,6 @@
     background-color: #e0f3ff;
 }
 
-/* Today Button */
 
 
 .rbc-btn-group.rbc-today-btn:hover {
@@ -104,22 +98,19 @@
 }
 
 
-/* Event Form */
-/* Overlay background */
 .eventform-overlay {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.5); /* Dark overlay for better visibility */
+    background: rgba(0, 0, 0, 0.5);
     display: flex;
     justify-content: center;
     align-items: center;
     z-index: 1000;
 }
 
-/* Form container */
 .eventform {
     background-color: white;
     padding: 25px;
@@ -131,7 +122,6 @@
     animation: fadeIn 0.3s ease-in-out;
 }
 
-/* Close (X) button */
 .eventform-close-icon {
     position: absolute;
     top: 12px;
@@ -146,7 +136,6 @@
     transform: scale(1.2);
 }
 
-/* Input group with icon */
 .eventform-input-group {
     position: relative;
     margin-bottom: 12px;
@@ -162,7 +151,7 @@
 
 .eventform-input-group input {
     width: 100%;
-    padding: 12px 12px 12px 36px; /* Adjust padding to make space for the icon */
+    padding: 12px 12px 12px 36px; 
     border: 1px solid #ccc;
     border-radius: 6px;
     font-size: 14px;
@@ -175,12 +164,23 @@
     box-shadow: 0 0 5px rgba(0, 85, 182, 0.3);
 }
 
-/* Select dropdown */
 .eventform-select {
     border: #ccc 1px solid;
 }
-
-/* Button styles */
+.heading-bg-calendar{
+    background-color: #0056b3;
+    color: #fff;
+    margin-top: -30px;
+    width: 104%;
+    font-size: 18px;
+    margin-left: -20px;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 15px;
+}
 .eventform-add-btn, .eventform-cancel-btn {
     width: 100%;
     padding: 12px;
@@ -195,7 +195,6 @@
     gap: 8px;
 }
 
-/* Primary button */
 .eventform-add-btn {
     background-color: #0055b6;
     color: white;
@@ -206,7 +205,6 @@
     transform: scale(1.05);
 }
 
-/* Cancel button */
 .eventform-cancel-btn {
     background-color: #ff4d4d;
     color: white;
@@ -218,7 +216,6 @@
     transform: scale(1.05);
 }
 
-/* Responsive adjustments */
 @media (max-width: 500px) {
     .eventform {
         width: 90%;
@@ -226,7 +223,6 @@
     }
 }
 
-/* Calendar Event */
 .calendar-event {
     display: flex;
     justify-content: space-between;
@@ -253,7 +249,6 @@
     color: #ff4d4d;
 }
 
-/* Fade-in Animation */
 @keyframes fadeIn {
     0% {
         opacity: 0;
@@ -265,7 +260,6 @@
     }
 }
 
-/* Shake Animation */
 @keyframes shake {
     0%, 100% { transform: translateX(0); }
     25% { transform: translateX(-5px); }
@@ -273,7 +267,6 @@
     75% { transform: translateX(-5px); }
 }
 
-/* Responsive Design */
 @media (max-width: 768px) {
     .eventform {
         flex-direction: column;
@@ -296,5 +289,113 @@
 
     .form-grid {
         grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 1200px) {
+    .calendar-render {
+        width: 85%;
+        margin: 10px auto;
+    }
+}
+
+@media (max-width: 992px) {
+    .calendar-render {
+        width: 90%;
+        margin: 10px auto;
+    }
+}
+
+@media (max-width: 768px) {
+    .calendar-render {
+        width: 95%;
+        margin: 15px auto;
+    }
+
+    .calendar-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .calendar-header h1 {
+        font-size: 18px;
+    }
+
+    .add-event-icon, .close-event-icon {
+        font-size: 20px;
+    }
+
+    .eventform {
+        flex-direction: column;
+        padding: 20px;
+        gap: 15px;
+    }
+
+    .eventform-input-group, .eventform-select {
+        width: 100%;
+    }
+
+    .eventform-add-btn {
+        width: 100%;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 576px) {
+    .calendar-render {
+        width: 100%;
+        margin: 10px auto;
+    }
+
+    .calendar-header h1 {
+        font-size: 16px;
+    }
+
+    .add-event-icon, .close-event-icon {
+        font-size: 18px;
+    }
+
+    .eventform {
+        width: 100%;
+        padding: 15px;
+    }
+
+    .eventform-input-group input {
+        padding: 10px 10px 10px 30px;
+    }
+
+    .eventform-add-btn, .eventform-cancel-btn {
+        padding: 10px;
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 400px) {
+    .calendar-header {
+        padding: 5px 10px;
+    }
+
+    .calendar-header h1 {
+        font-size: 14px;
+    }
+
+    .add-event-icon, .close-event-icon {
+        font-size: 16px;
+    }
+
+    .eventform {
+        padding: 10px;
+    }
+
+    .eventform-input-group input {
+        padding: 8px 8px 8px 28px;
+    }
+
+    .eventform-add-btn, .eventform-cancel-btn {
+        padding: 8px;
+        font-size: 12px;
     }
 }

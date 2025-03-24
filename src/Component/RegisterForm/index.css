@@ -48,7 +48,7 @@
 .form-description {
   font-size: 14px;
   font-weight: 500;
-  color: #333; /* updated color */
+  color: #333; 
   margin-bottom: 20px;
 }
 
@@ -78,9 +78,9 @@
 }
 
 .input-label {
-  font-size: 14px; /* updated to match login.css */
-  font-weight: 600; /* updated to match login.css */
-  color: #333; /* updated color */
+  font-size: 14px; 
+  font-weight: 600; 
+  color: #333; 
   margin-bottom: 5px;
 }
 
@@ -88,7 +88,7 @@
 .select-field,
 .textarea-field {
   font-size: 14px;
-  color: #333; /* updated color */
+  color: #333; 
   border: none;
   border-bottom: 1px solid #2d2d2d;
   background-color: transparent;
@@ -121,7 +121,7 @@
 .submit-button:hover {
   background-color: #ffffff;
   border: 2px solid #1852a9;
-  color: #333; /* updated color */
+  color: #333; 
   transition: 0.3s ease-in-out;
 }
 
@@ -142,7 +142,6 @@
   font-size: 16px;
 }
 
-/* Responsive Styles for Small Devices */
 @media screen and (max-width: 768px) {
   .register-form-wrapper {
     padding: 20px;
@@ -179,7 +178,6 @@
   }
 }
 
-/* Styles for Larger Screens */
 @media screen and (min-width: 992px) {
   .register-img {
     display: block;

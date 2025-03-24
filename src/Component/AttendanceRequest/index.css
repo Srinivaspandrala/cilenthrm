@@ -1,8 +1,7 @@
 .attendancereq-container {
-  width: 100%;
-  max-width: 600px;
+  width: 65%;
   margin: 50px auto;
-  padding: 20px;
+  padding: 30px;
   border-radius: 8px;
   color: #02499b !important;
   background-color: #ffffff;
@@ -11,10 +10,9 @@
   transition: 0.3s !important;
 }
 .attendancereq-container1 {
-  width: 100%;
-  max-width: 600px;
+  width: 65%;
   margin: 50px auto;
-  padding: 40px;
+  padding: 30px;
   color: #02499b  !important;
   text-align: center;
   margin-left: 500px ;
@@ -43,7 +41,6 @@
   font-size: 16px;
   font-weight: 600;
   color: #444;
-  margin-bottom: 8px;
   display: block;
   transition: color 0.3s ease;
 }
@@ -79,7 +76,7 @@
   font-size: 14px;
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.3s ease;
-  float: right; /* Align to the right end */
+  float: right; 
 }
 
 .submit-btn:hover {
@@ -95,7 +92,6 @@
   transition: color 0.3s ease;
 }
 
-/* Responsive Design */
 @media (max-width: 768px) {
   .attendancereq-container {
     padding: 15px;
@@ -103,6 +99,6 @@
 
   .submit-btn {
     width: 100%;
-    float: none; /* Center align on small screens */
+    float: none; 
   }
 }

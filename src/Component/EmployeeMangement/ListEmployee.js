@@ -1,10 +1,11 @@
-import { FaDownload, FaCheckCircle, FaTimesCircle, FaPlus, FaUser } from "react-icons/fa";
+import {FaCheckCircle,FaPlus, FaUser,FaSignOutAlt,FaPauseCircle } from "react-icons/fa";
 import { Nav } from "react-bootstrap";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
+import CountUp from "react-countup";
 import "./ListEmployee.css";
-import { FaCircleInfo } from "react-icons/fa6";
+import { FaBan, FaCircleInfo } from "react-icons/fa6";
 
 const ListEmployee = () => {
     const [tableData, setTableData] = useState([]);
@@ -46,7 +47,6 @@ const ListEmployee = () => {
         navigate(`/overviewemployee/${employeeID}`);
     };
 
-    // Employee statistics
     const totalEmployees = tableData.length;
     const activeEmployees = tableData.filter(emp => emp.status === "Active").length;
     const inactiveEmployees = totalEmployees - activeEmployees;
@@ -60,19 +60,27 @@ const ListEmployee = () => {
 
     return (
         <div className="container-list-employee">
-            {/* Employee Statistics */}
+            <div>
+                <h1 className="heading-bg-records">Employee Records</h1>
+            </div>
             <div className="employee-stats">
                 <div className="stat-box">
-                    <h4 >Total Employees</h4>
-                    <p>{totalEmployees}</p>
+                    <h4>Total Employees</h4>
+                    <p>
+                        <CountUp start={0} end={totalEmployees} duration={2} separator="," />
+                    </p>
                 </div>
-                <div className="stat-box active">
-                    <h4 style={{color:"#313131"}}>Active Employees</h4>
-                    <p>{activeEmployees}</p>
+                <div className="stat-box active-stats">
+                    <h4 style={{ color: "#313131" }}>Active Employees</h4>
+                    <p>
+                        <CountUp start={0} end={activeEmployees} duration={2} separator="," />
+                    </p>
                 </div>
                 <div className="stat-box inactive">
-                    <h4 style={{color:"#313131"}}>Inactive Employees</h4>
-                    <p>{inactiveEmployees}</p>
+                    <h4 style={{ color: "#313131" }}>Inactive Employees</h4>
+                    <p>
+                        <CountUp start={0} end={inactiveEmployees} duration={2} separator="," />
+                    </p>
                 </div>
             </div>
 
@@ -128,19 +136,35 @@ const ListEmployee = () => {
                             <td>{row.WorkEmail}</td>
                             <td>{row.Role}</td>
                             <td>{row.designation}</td>
-                            <td className={row.status === "Active" ? "active-status" : "inactive-status"}>
+                            <td className={
+                                row.status === "Active" ? "active-status" :
+                                row.status === "Suspended" ? "suspended-status" :
+                                row.status === "On Hold" ? "onhold-status" :
+                                row.status === "Resigned" ? "resigned-status" : ""
+                            }>
                                 {row.status === "Active" ? (
                                     <>
                                         <FaCheckCircle style={{ color: "green", marginRight: "5px" }} />
                                         Active
                                     </>
-                                ) : (
+                                ) : row.status === "Suspended" ? (
                                     <>
-                                        <FaTimesCircle style={{ color: "red", marginRight: "5px" }} />
-                                        Inactive
+                                        <FaBan style={{ color: "orange", marginRight: "5px" }} />
+                                        Suspended
                                     </>
-                                )}
-                            </td>                            <td>
+                                ) : row.status === "On Hold" ? (
+                                    <>
+                                        <FaPauseCircle style={{ color: "blue", marginRight: "5px" }} />
+                                        On Hold
+                                    </>
+                                ) : row.status === "Resigned" ? (
+                                    <>
+                                        <FaSignOutAlt style={{ color: "red", marginRight: "5px" }} />
+                                        Resigned
+                                    </>
+                                ) : null}
+                            </td>
+                            <td>
                                 <FaCircleInfo className="info-icon" onClick={() => viewEmployee(row.EmployeeID)} />
                             </td>
                         </tr>

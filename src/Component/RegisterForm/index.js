@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Navigate} from "react-router-dom";
-import "bootstrap/dist/css/bootstrap.min.css"; // Import Bootstrap for styling
+import "bootstrap/dist/css/bootstrap.min.css"; 
 
 import "./index.css";
 
@@ -36,38 +36,34 @@ class RegisterForm extends Component {
   };
 
   handleFormSubmission = async (event) => {
-    event.preventDefault(); // Prevent page refresh on form submission
+    event.preventDefault(); 
 
     const { fullname, email, company, gender, dateofbirth, country, Aboutyourself } = this.state;
 
-    // Check if any required field is empty and show an error message if so
     if (!fullname || !email || !company || !gender || !dateofbirth || !country || !Aboutyourself) {
       this.handleFormSubmitFailure("All fields are required.");
       return;
     }
 
-    // Prepare user data to be sent to the server
     const userDetails = { fullname, email, company, gender, dateofbirth, country, Aboutyourself };
 
-    // Define the API endpoint and request options
     const url = "http://localhost:5000/signup";
     const options = {
       method: "POST",
       headers: {
-        "Content-Type": "application/json", // Specify that we're sending JSON data
+        "Content-Type": "application/json",
       },
-      body: JSON.stringify(userDetails), // Convert the user details to JSON
+      body: JSON.stringify(userDetails), 
     };
 
     try {
       const response = await fetch(url, options);
-      const data = await response.json(); // Parse the JSON response
+      const data = await response.json(); 
 
-      // Handle response based on status
       if (response.ok) {
-        this.handleFormSubmitSuccess(); // On success, redirect to login page
+        this.handleFormSubmitSuccess(); 
       } else {
-        this.handleFormSubmitFailure(data.message || "Something went wrong."); // Show error message on failure
+        this.handleFormSubmitFailure(data.message || "Something went wrong."); 
       }
     } catch (error) {
       this.handleFormSubmitFailure("Something went wrong. Please try again.");
@@ -111,7 +107,7 @@ class RegisterForm extends Component {
           </div>
           <form className="register-form" onSubmit={this.handleFormSubmission}>
             <hr className="form-separator" />
-            {showSubmitError && <p className="form-error-message">{errorMsg}</p>} {/* Display error message if submission failed */}
+            {showSubmitError && <p className="form-error-message">{errorMsg}</p>} 
             <div className="form-input-group">
               <label className="input-label" htmlFor="fullname" style={{ color: '#333' }}>
                Fullname
@@ -147,7 +143,7 @@ class RegisterForm extends Component {
               <select
                 id="gender"
                 name="gender"
-                className="input-field" // Changed from "select-field" to "input-field"
+                className="input-field" 
                 value={gender}
                 onChange={this.handleInputChange}
                 required

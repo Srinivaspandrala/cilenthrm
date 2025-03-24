@@ -6,6 +6,9 @@
   padding-right: 50px;
   transform: translateY(20px);
   transition: 0.3s;
+  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.1);
+
+
 }
 .attendance-con {
   width: 74%;
@@ -17,6 +20,9 @@
   transition: 0.3s;
   margin-right: 0px !important;
   padding-right: 0px !important;
+  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.1);
+  animation: fadeIn 0.5s ease-in-out;
+
 }
 
 .attendance-container.show {
@@ -35,9 +41,24 @@
   margin-bottom: 20px;
 }
 
+.info-title{
+  background-color: #0056b3;
+  color: #fff;
+  width: 100%;
+  font-size: 18px;
+  margin: 15px 0px 0px 0px;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 15px;
+
+}
+
 .table-container {
   overflow-x: auto;
-  background-color: #f0f4f8; /* Add background color to table container */
+  background-color: #f0f4f8; 
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 0 10px #0000001a;
@@ -45,32 +66,31 @@
   border-radius: 8px;
   scrollbar-width: thin; 
   scrollbar-color:#f0f4f8; 
+  margin-top: 15px;
 }
 
 .attendance-table-wrapper {
-  max-height: 450px; /* Ensure this container has overflow-y */
+  max-height: 450px; 
   overflow-y: auto;
-  overflow-x: hidden; /* Prevent horizontal scroll */
+  overflow-x: hidden; 
 }
 
-.button-container-left {
-  display: flex;
-  align-items: center;
-}
 
 .button-container-right {
   display: flex;
+  margin-top: 10px;
+  margin-left: 1200px;
 }
 
 .info-heading {
-  margin-right: 20px;
   padding: 10px 20px;
-  background: #02499b;
+  background: #0056b3;
   color: #fff;
   border: none;
   border-radius: 5px;
   font-weight: bold;
   cursor: pointer;
+  margin-left: -250px;
   box-shadow: 0 4px 8px #0000001a;
 }
 
@@ -101,7 +121,6 @@
   z-index: 10;
 }
 
-/* Add this rule to ensure the table header remains above the table body when scrolling */
 .attendance-table th {
   position: sticky;
   top: 0;
@@ -110,7 +129,6 @@
   color: #ffffff;
 }
 
-/* Add this rule to hide the table data when scrolling up to the table header */
 .table-container::before {
   content: "";
   display: block;

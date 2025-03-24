@@ -1,29 +1,23 @@
-/* --------------------------------------------------
-   Layout: Application Container
------------------------------------------------------ */
 .app-container {
   display: flex;
   flex-direction: column;
   font-size: 1rem !important;
   transition: transform 0.3s ease;
-  height: 90vh; /* Set total height to 100vh */
+  height: 90vh; 
 }
 
-/* --------------------------------------------------
-   Navigation Panel
------------------------------------------------------ */
 .nav-panel {
   width: 70px;
-  height: 90vh; /* Decreased width */
+  height: 90vh; 
   padding: 10px 0;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   background-color: #ffffff !important;
-  font-size: 1rem; /* Set font size to 1rem */
+  font-size: 1rem; /* rem === 16px */ 
   transition: transform 0.3s ease;
 }
 
 .nav-panel h2, .nav-panel h3 {
-  font-size: 1rem; /* Ensure h2 and h3 elements have the same font size */
+  font-size: 1rem;
   transition: transform 0.3s ease;
 }
 
@@ -46,22 +40,17 @@
   transform: translateY(-2px);
 }
 
-/* Active state for nav items */
 .nav-card.active {
   background-color: #02499b;
   color: #fff;
 }
 
-/* --------------------------------------------------
-   Main Content Area
------------------------------------------------------ */
 .content-area {
   width: 100%;
   padding: 20px;
   transition: transform 0.3s ease;
 }
 
-/* Card Layout & Styles */
 .card-grid {
   display: grid;
   grid-template-columns: 1fr;
@@ -93,9 +82,6 @@
   background-color: #02499b;
 }
 
-/* --------------------------------------------------
-   Profile Section
------------------------------------------------------ */
 .profile-section {
   display: flex;
   flex-direction: column;
@@ -134,7 +120,6 @@
   transition: transform 0.3s ease;
 }
 
-/* Replace photo styling with icon styling */
 .profile-icon {
   font-size: 60px;
   color: #02499b;
@@ -200,9 +185,6 @@
   transition: transform 0.3s ease;
 }
 
-/* --------------------------------------------------
-   Form Styles
------------------------------------------------------ */
 .form-group {
   margin-bottom: 15px;
   transition: transform 0.3s ease;
@@ -242,7 +224,6 @@
   transform: translateY(-2px);
 }
 
-/* Password Input Container */
 .password-input-container {
   position: relative;
   display: flex;
@@ -250,7 +231,7 @@
 }
 
 .password-input-container input {
-  padding-right: 30px; /* Adjust padding to make space for the icon */
+  padding-right: 30px; 
 }
 
 .password-input-container .fas.fa-lock {
@@ -266,9 +247,16 @@
   color: #aaa;
 }
 
-/* --------------------------------------------------
-   Horizontal Card Layout
------------------------------------------------------ */
+.password-input {
+  padding-left: 30px; 
+}
+
+.password-icon {
+  position: absolute;
+  left: 10px;
+  color: #aaa;
+}
+
 .horizontal-card-layout {
   display: flex;
   flex-wrap: wrap;
@@ -284,9 +272,6 @@
   transition: transform 0.3s ease;
 }
 
-/* --------------------------------------------------
-   Company Chart
------------------------------------------------------ */
 .company-chart {
   background-color: #e9ecef;
   border-radius: 10px;
@@ -296,32 +281,27 @@
   transition: transform 0.3s ease;
 }
 
-/* --------------------------------------------------
-   Employee Page
------------------------------------------------------ */
 .employee-page {
-  background: linear-gradient(150deg, #02499b, #0257ac); /* Apply background color */
+  background: linear-gradient(150deg, #02499b, #0257ac);
   transition: transform 0.3s ease;
 }
 
-/* --------------------------------------------------
-   Responsive Design
------------------------------------------------------ */
+
 @media (min-width: 768px) {
   .app-container {
     flex-direction: row;
   }
 
   .nav-panel {
-    width: 200px; /* Decreased width */
+    width: 200px; 
     height: 100vh;
     padding: 15px 0;
     margin: 0;
-    font-size: 1rem; /* Set font size to 1rem */
+    font-size: 1rem; 
   }
 
   .content-area {
-    width: calc(100% - 200px); /* Decreased width */
+    width: calc(100% - 200px); 
     padding: 20px;
     margin: 0;
   }
@@ -337,18 +317,14 @@
 
 @media (min-width: 992px) {
   .nav-panel {
-    width: 250px; /* Decreased width */
-    font-size: 1rem; /* Set font size to 1rem */
+    width: 250px; 
+    font-size: 1rem; 
   }
 
   .content-area {
-    width: calc(100% - 250px); /* Decreased width */
+    width: calc(100% - 250px); 
   }
 }
-
-/* --------------------------------------------------
-   Exit Details Table
------------------------------------------------------ */
 .exit-details-table {
   width: 100%;
   border-collapse: collapse;
@@ -379,9 +355,6 @@
   transition: transform 0.3s ease;
 }
 
-/* --------------------------------------------------
-   Message Styles
------------------------------------------------------ */
 .message {
   padding: 10px;
   margin-bottom: 10px;

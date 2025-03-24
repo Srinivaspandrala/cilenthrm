@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import { FaCheckCircle ,FaTimesCircle} from 'react-icons/fa'; // Import the React icon
+import { FaCheckCircle ,FaPauseCircle,FaSignOutAlt,FaTimesCircle} from 'react-icons/fa'; // Import the React icon
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMale, faFemale } from '@fortawesome/free-solid-svg-icons';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 import Cookies from 'js-cookie';
-import NavbarComponent from '../Navbar'; // Import the Navbar component
-import './index.css'; // Import the CSS file
+import NavbarComponent from '../Navbar'; 
+import './index.css'; 
+import { FaBan } from 'react-icons/fa6';
 
 function EmployeePage() {
   const [section, setSection] = useState('mydetails');
@@ -158,7 +159,6 @@ function ContentArea({ section }) {
     <main className="content-area">
       {section === "mydetails" && (
         <div className="card-grid">
-          {/* Enhanced Profile Details Card */}
           <Card>
             <div className="profile-section">
               <h3>Employee Details</h3>
@@ -176,66 +176,58 @@ function ContentArea({ section }) {
             <button className='updatedetalis-button'>Update Details</button>
           </Card>
 
-          {/* Change Password Card */}
           <Card className="card-item-password ">
             <h3>Change Password</h3>
             {message && (
               <p className={`message ${messageType}`}>{message}</p>
             )}
-            <div className="form-group">
-              <label htmlFor="oldPassword" className="form-label">Old Password: </label>
-              <div className="password-input-container">
-                <i className="fas fa-lock" style={{color:"#005bb5"}}></i>
-                <input 
-                  id="oldPassword"
-                  type={showOldPass ? 'text' : 'password'}
-                  value={oldPassword} 
-                  onChange={(e) => setOldPassword(e.target.value)} 
-                  className="form-input"
-                />
-                <span className="password-toggle-icon" onClick={() => setShowOldPass(!showOldPass)}>
-                  {showOldPass ? <FaEyeSlash /> : <FaEye />}
-                </span>
-              </div>
+            <div className="input-group">
+              <i className="fas fa-lock"></i>
+              <input 
+                id="oldPassword"
+                type={showOldPass ? 'text' : 'password'}
+                value={oldPassword}
+                placeholder='Old Password'
+                onChange={(e) => setOldPassword(e.target.value)} 
+                className="form-input"
+              />
+              <span className="password-toggle-icon" onClick={() => setShowOldPass(!showOldPass)}>
+                {showOldPass ? <FaEyeSlash /> : <FaEye />}
+              </span>
             </div>
-            <div className="form-group">
-              <label htmlFor="newPassword" className="form-label">New Password: </label>
-              <div className="password-input-container">
-                <i className="fas fa-lock" style={{color:"#005bb5"}}></i>
-                <input 
-                  id="newPassword"
-                  type={showNewPass ? 'text' : 'password'}
-                  value={newPassword} 
-                  onChange={(e) => setNewPassword(e.target.value)} 
-                  className="form-input"
-                />
-                <span className="password-toggle-icon"  onClick={() => setShowNewPass(!showNewPass)}>
-                  {showNewPass ? <FaEyeSlash /> : <FaEye />}
-                </span>
-              </div>
+            <div className="input-group">
+              <i className="fas fa-lock"></i>
+              <input 
+                id="newPassword"
+                type={showNewPass ? 'text' : 'password'}
+                value={newPassword} 
+                placeholder='New Password'
+                onChange={(e) => setNewPassword(e.target.value)} 
+                className="form-input"
+              />
+              <span className="password-toggle-icon" onClick={() => setShowNewPass(!showNewPass)}>
+                {showNewPass ? <FaEyeSlash /> : <FaEye />}
+              </span>
             </div>
-            <div className="form-group">
-              <label htmlFor="reenterPassword" className="form-label">Re-enter Password: </label>
-              <div className="password-input-container">
-                <i className="fas fa-lock" style={{color:"#005bb5"}}></i>
-                <input 
-                  id="reenterPassword"
-                  type={showReenterPass ? 'text' : 'password'} 
-                  value={reenterPassword} 
-                  onChange={(e) => setReenterPassword(e.target.value)} 
-                  className="form-input"
-                />
-                <span className="password-toggle-icon" onClick={() => setShowReenterPass(!showReenterPass)}>
-                  {showReenterPass ? <FaEyeSlash /> : <FaEye />}
-                </span>
-              </div>
+            <div className="input-group">
+              <i className="fas fa-lock"></i>
+              <input 
+                id="reenterPassword"
+                type={showReenterPass ? 'text' : 'password'} 
+                value={reenterPassword} 
+                placeholder='Confirm Password'
+                onChange={(e) => setReenterPassword(e.target.value)} 
+                className="form-input"
+              />
+              <span className="password-toggle-icon" onClick={() => setShowReenterPass(!showReenterPass)}>
+                {showReenterPass ? <FaEyeSlash /> : <FaEye />}
+              </span>
             </div>
             <button className="password-btn" onClick={handlePasswordChange}>
               Change Password
             </button>
           </Card>
 
-          {/* Contact Info Card */}
           <Card className="contact-card">
             <div className="contact-info">
               <h3>Contact Info</h3>
@@ -272,19 +264,35 @@ function ContentArea({ section }) {
                   <td>{employeeDetails.LastName || 'N/A'}</td>
                   <td>{employeeDetails.startdate|| 'N/A'}</td>
                   <td>{employeeDetails.tenure}</td>
-                  <td className={employeeDetails.status === "Active" ? "active-status" : "inactive-status"}>
-                  {employeeDetails.status === "Active" ? (
-                      <>
-                          <FaCheckCircle style={{ color: "green", marginRight: "5px" }} />
-                          Active
-                      </>
-                  ) : (
-                      <>
-                          <FaTimesCircle style={{ color: "red", marginRight: "5px" }} />
-                          Inactive
-                      </>
-                  )}
-              </td>                </tr>
+                  <td className={
+                                                  employeeDetails.status === "Active" ? "active-status" :
+                                                  employeeDetails.status === "Suspended" ? "suspended-status" :
+                                                  employeeDetails.status === "On Hold" ? "onhold-status" :
+                                                  employeeDetails.status === "Resigned" ? "resigned-status" : ""
+                                              }>
+                                                  {employeeDetails.status === "Active" ? (
+                                                      <>
+                                                          <FaCheckCircle style={{ color: "green", marginRight: "5px" }} />
+                                                          Active
+                                                      </>
+                                                  ) : employeeDetails.status === "Suspended" ? (
+                                                      <>
+                                                          <FaBan style={{ color: "orange", marginRight: "5px" }} />
+                                                          Suspended
+                                                      </>
+                                                  ) : employeeDetails.status === "On Hold" ? (
+                                                      <>
+                                                          <FaPauseCircle style={{ color: "blue", marginRight: "5px" }} />
+                                                          On Hold
+                                                      </>
+                                                  ) : employeeDetails.status === "Resigned" ? (
+                                                      <>
+                                                          <FaSignOutAlt style={{ color: "red", marginRight: "5px" }} />
+                                                          Resigned
+                                                      </>
+                                                  ) : null}
+                                              </td>
+                  </tr>
               </tbody>
             </table>
           </div>
@@ -310,9 +318,16 @@ function ContentArea({ section }) {
                   <td><span className="profile-icon1" aria-hidden="true">👤</span></td>
                   <td>{employeeDetails.EmployeeID || 'N/A'}</td>
                   <td>{employeeDetails.FullName || 'N/A'}</td>
-                  <td>-</td>
-                  <td>-</td>
-                  <td>-</td>
+                  {employeeDetails.status === "Resigned" ? (
+                    <>
+                      <td>{employeeDetails.status|| "-"}</td>
+                      <td>{employeeDetails.status || "-"}</td>
+                    </>
+                  ) : (
+                    <>
+                      <td>-</td>
+                    </>
+                  )}
                 </tr>
               </tbody>
             </table>

@@ -104,9 +104,10 @@
     border-bottom-left-radius: 100px;
     margin-top: 22px;
     position: relative;
-    z-index: 1001; /* Ensure toggle icon is above the navbar */
+    z-index: 1001; 
     margin-right: auto;
     margin-top: 0px;
+    border: none;
 }
 
 .sidebar.expanded .toggle-icon {

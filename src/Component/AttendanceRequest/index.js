@@ -30,7 +30,6 @@ const AttendanceRequest = () => {
         }
 
         const data = await response.json();
-        console.log("API Response:", data); // Debugging
 
         const dates =
           Array.isArray(data.attendancerquest) && data.attendancerquest.length > 0
@@ -55,7 +54,7 @@ const AttendanceRequest = () => {
 
   return (
     <div className={slide === "false" ?  "attendancereq-container" : "attendancereq-container1"}>
-      <h1>Attendance Request</h1>
+      <h1 className="heading-bg-req">Attendance Request</h1>
       {error && <p className="error">{error}</p>}
 
       <form>

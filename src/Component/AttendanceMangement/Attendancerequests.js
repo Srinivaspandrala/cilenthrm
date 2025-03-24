@@ -1,6 +1,7 @@
 import React, { useState, useMemo } from 'react';
 import './Attendancerequests.css';
-import { FaGear, FaUser } from 'react-icons/fa6';
+import CountUp from "react-countup";
+import { FaUser } from 'react-icons/fa6';
 
 const initialDeals = [
   { id: 'EMP001', name: 'John Smith', reason: 'Frontend Development', date: '22 Dec 2022', status: 'Late', reject: false },
@@ -54,18 +55,22 @@ function AdminAttendenceReqp() {
 
   return (
     <div className="admin-attendance-reqp-container">
+      <h1 className='heading-bg-req'>Attendance Request</h1>
       <div className="employee-stats"> 
                 <div className="stat-box">
                     <h4>Requests</h4>
-                    <p>6</p>
-                </div>
-                <div className="stat-box active">
+                    <p>
+                        <CountUp start={0} end="6" duration={2} separator="," />
+                    </p>                </div>
+                <div className="stat-box active-stats">
                     <h4 style={{color:"#313131"}}>Approved</h4>
-                    <p>1</p>
+                    <p><CountUp start={0} end="1" duration={2} separator="," />
+                    </p>
                 </div>
                 <div className="stat-box inactive">
                     <h4 style={{color:"#313131"}}>Rejected</h4>
-                    <p>0</p>
+                    <p>                        <CountUp start={0} end="2" duration={2} separator="," />
+                    </p>
                 </div>
             </div>
             <div>

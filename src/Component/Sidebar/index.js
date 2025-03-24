@@ -14,21 +14,21 @@ import {
   FaChevronDown,
 } from "react-icons/fa";
 import { FaGears, FaCoins, FaClipboard } from "react-icons/fa6";
-import { useTheme } from "../../context/ThemeContext"; // ✅ Import Theme Context
-import "./index.css"; // Ensure proper styling is provided
+import { useTheme } from "../../context/ThemeContext"; 
+import "./index.css"; 
 
 const Sidebar = ({ onToggle = () => {} }) => {
-  const { toggleTheme } = useTheme(); // ✅ Use theme context
+  const { toggleTheme } = useTheme(); 
 
   const [expandedSections, setExpandedSections] = useState({});
   const [isExpanded, setIsExpanded] = useState(true);
   const [userRole, setUserRole] = useState("");
   const navigate = useNavigate();
   const username = Cookies.get("fullname");
-  const designation = Cookies.get("designation") // Fetch username from cookies if stored
+  const designation = Cookies.get("designation") 
 
   useEffect(() => {
-    const token = Cookies.get("token"); // Assuming token is stored in cookies
+    const token = Cookies.get("token");
     if (token) {
       const decodedToken = jwtDecode(token);
       setUserRole(decodedToken.role);
@@ -112,7 +112,7 @@ const Sidebar = ({ onToggle = () => {} }) => {
       section: "Attendance Management",
       role: "Admin",
       subItems: [
-        { label: "Attendance Logs", path: "/attendancelogs" },
+        { label: "Logs & Activities", path: "/logsandactivites" },
         { label: "Attendance Requests", path: "/employeeattendancerequest" },
         { label: "Mark Attendance", path: "/attendancemarking" },
       ],

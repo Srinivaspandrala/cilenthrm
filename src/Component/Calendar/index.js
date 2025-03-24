@@ -18,7 +18,6 @@ const localizer = dateFnsLocalizer({
     locales
 });
 
-// Event types with colors
 const eventTypes = {
     Meeting: '#1E90FF',
     Birthday: '#FF4500',
@@ -41,7 +40,6 @@ const MyCalendar = () => {
         type: ''
     });
 
-    // Fetch existing events from the server
     const fetchEvents = async () => {
         const token = document.cookie.split('; ').find(row => row.startsWith('token='))?.split('=')[1];
 
@@ -61,7 +59,6 @@ const MyCalendar = () => {
             const data = await response.json();
 
             if (response.ok) {
-                // Map event types to colors
                 const mappedEvents = data.events.map((event) => ({
                     ...event,
                     start: new Date(`${event.Date}T${event.StartTime}`),
@@ -107,10 +104,10 @@ const MyCalendar = () => {
             type: newEvent.type
         };
 
-        console.log('Sending event data:', eventData); // Add this line
+        console.log('Sending event data:', eventData); 
 
         try {
-            const response = await fetch('http://localhost:5000/events', {
+            const response = await fetch('https://serverhrm-6q98.onrender.com/events', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -157,7 +154,7 @@ const MyCalendar = () => {
         }
 
         try {
-            const response = await fetch(`http://localhost:5000/events/${eventId}`, {
+            const response = await fetch(`https://serverhrm-6q98.onrender.com/events/${eventId}`, {
                 method: 'DELETE',
                 headers: {
                     'Authorization': `Bearer ${token}`
@@ -190,6 +187,14 @@ const MyCalendar = () => {
         setShowForm(true);
     };
 
+    const handleNavigate = (date, view) => {
+        console.log('Navigated to:', date, 'View:', view);
+    };
+
+    const handleViewChange = (view) => {
+        console.log('View changed to:', view);
+    };
+
     const eventStyleGetter = (event) => {
         return {
             style: {
@@ -212,37 +217,32 @@ const MyCalendar = () => {
     return (
         <div className='Calendar-siderBar'>
             <div style={{ padding: '20px' }} className='calendar-render'>
+            <h1 className="heading-bg-calendar">Calendar</h1>
                 {showForm && (
                     <div className="eventform-overlay">
                         <div className="eventform">
-                            {/* Close Button */}
                             <FontAwesomeIcon icon={faTimes} className="eventform-close-icon" onClick={() => setShowForm(false)} />
 
-                            {/* Event Title */}
                             <div className="eventform-input-group">
                                 <i className="fas fa-calendar-plus" style={{color:"#0055b6"}}></i>
                                 <input type="text" name="title" value={newEvent.title} onChange={handleInputChange} placeholder="Event Title" className="styled-input" />
                             </div>
 
-                            {/* Event Date */}
                             <div className="eventform-input-group">
                                 <i className="fas fa-calendar-alt" style={{color:"#0055b6"}}></i>
                                 <input type="date" name="date" value={newEvent.date} onChange={handleInputChange} className="styled-input" />
                             </div>
 
-                            {/* Start Time */}
                             <div className="eventform-input-group">
                                 <i className="fas fa-clock" style={{color:"#0055b6"}}></i>
                                 <input type="time" name="startTime" value={newEvent.startTime} onChange={handleInputChange} className="styled-input" />
                             </div>
 
-                            {/* End Time */}
                             <div className="eventform-input-group">
                                 <i className="fas fa-clock" style={{color:"#0055b6"}}></i>
                                 <input type="time" name="endTime" value={newEvent.endTime} onChange={handleInputChange} className="styled-input" />
                             </div>
 
-                            {/* Event Type Dropdown */}
                             <div className="eventform-select">
                                 <i className="fas fa-list" style={{color:"#0055b6"}}></i>
                                 <select name="type" value={newEvent.type} onChange={handleInputChange} style={{border:"none"}} >
@@ -253,7 +253,6 @@ const MyCalendar = () => {
                                 </select>
                             </div>
 
-                            {/* Buttons */}
                             <div className="form-buttons">
                                 <button className="eventform-add-btn" onClick={handleAddEvent}>
                                     <FontAwesomeIcon icon={faCalendarPlus} /> Add Event
@@ -281,6 +280,8 @@ const MyCalendar = () => {
                     eventPropGetter={eventStyleGetter}
                     selectable
                     onSelectSlot={handleDateClick}
+                    onNavigate={handleNavigate}
+                    onView={handleViewChange}
                     components={{
                         event: ({ event }) => (
                             <div>
@@ -291,7 +292,7 @@ const MyCalendar = () => {
                     }}
                 />
             </div>
-        </div>
+            </div>
     );
 };
 
